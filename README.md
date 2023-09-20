@@ -97,7 +97,7 @@ Install this project with:
 
 <!-- AUTHORS -->
 
-##<a name="authors">👥 Authors</a>
+## <a name="authors">👥 Authors</a>
 
 👤 _Nalian Achei_
 
