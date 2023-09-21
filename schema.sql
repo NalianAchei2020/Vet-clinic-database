@@ -30,3 +30,12 @@ CREATE Table species(
   name VARCHAR(50),
   PRIMARY KEY(id)
 );
+
+-- remove species column
+ALTER TABLE animals
+DROP  COLUMN  species;
+
+--add foreign key to animals table
+ALTER TABLE animals
+ADD FOREIGN KEY (species_id ) REFERENCES species(id);
+ADD FOREIGN KEY (owner_id ) REFERENCES owners(id);
