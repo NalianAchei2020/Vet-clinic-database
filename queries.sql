@@ -30,3 +30,6 @@ WHERE species IS NULL;
 -- Start the transaction
 BEGIN;
 
+DELETE FROM animals
+WHERE date_of_birth > '2022-01-01';
+
