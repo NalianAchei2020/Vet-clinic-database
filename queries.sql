@@ -27,15 +27,12 @@ UPDATE animals
 SET species = 'pokemon'
 WHERE species IS NULL;
 
--- Start the transaction
+-- Start the transaction for delete
 BEGIN;
-
 DELETE FROM animals
 WHERE date_of_birth > '2022-01-01';
-
 -- Verify if all records in the animals table still exist
 SELECT * FROM animals;
-
 SAVEPOINT my_savepoint;
 -- Update all animals' weight to be their weight multiplied by -1
 UPDATE animals
@@ -46,5 +43,19 @@ ROLLBACK TO SAVEPOINT my_savepoint;
 UPDATE animals
 SET weight_kg = weight_kg * -1
 WHERE weight_kg < 0;
-
 COMMIT;
+
+-- Write queries to answer the following questions
+
+-- How many animals are there
+SELECT COUNT(*) FROM animals;
+-- How many animals have never tried to escape?
+SELECT COUNT( escape_attempts) FROM animals WHERE escape_attempts = 0;
+-- What is the average weight of animals?
+SELECT AVG(weight_kg) FROM animals;
+-- Who escapes the most, neutered or not neutered animals?
+SELECT neutered, COUNT(*) FROM animals WHERE escape_attempts > 0 GROUP BY neutered;
+-- What is the minimum and maximum weight of each type of animal?
+SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
