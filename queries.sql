@@ -33,3 +33,7 @@ BEGIN;
 DELETE FROM animals
 WHERE date_of_birth > '2022-01-01';
 
+-- Verify if all records in the animals table still exist
+SELECT * FROM animals;
+
+SAVEPOINT my_savepoint;
