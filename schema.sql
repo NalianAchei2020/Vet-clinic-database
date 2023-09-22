@@ -47,3 +47,21 @@ CREATE TABLE vets(
   date_of_graduation DATE,
   PRIMARY KEY(id)
 )
+
+--  relationship table between vets and species
+CREATE TABLE specializations(
+  species_id INT,
+  vet_id INT,
+  PRIMARY KEY(species_id, vet_id),
+  FOREIGN KEY(species_id) REFERENCES species(id),
+  FOREIGN KEY(vet_id) REFERENCES vets(id)
+)
+
+--  relationship table between vets and animals
+CREATE TABLE visits(
+  animal_id INT,
+  vet_id INT,
+  PRIMARY KEY(animal_id, vet_id),
+  FOREIGN KEY(animal_id) REFERENCES animals(id),
+  FOREIGN KEY(vet_id) REFERENCES vets(id)
+)
