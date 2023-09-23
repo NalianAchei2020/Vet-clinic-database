@@ -171,7 +171,7 @@ LEFT JOIN specializations spec ON spec.vet_id = vet.id AND spec.species_id = a.s
 WHERE spec.id IS NULL;
 
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
-SELECT species.name AS species_name, COUNT(*) AS number_of_visits
+SELECT species.name AS specialty, COUNT(*) AS number_of_visits
 FROM visits
 JOIN vets ON visits.vet_id = vets.id
 JOIN animals ON visits.animal_id = animals.id
